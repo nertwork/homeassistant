@@ -1,0 +1,64 @@
+- platform: mqtt
+  name: "Front Door Battery"
+  state_topic: smartthings/Front Door/battery
+  unit_of_measurement: '%'
+
+- platform: mqtt
+  name: "Front Door Entry"
+  state_topic: smartthings/Front Door/contact
+  payload_on: "open"
+  payload_off: "closed"
+
+- platform: mqtt
+  name: "James Life360"
+  state_topic: smartthings/James/presence
+  payload_on: "here"
+  payload_off: "away"
+
+- platform: mqtt
+  name: "Ricky Life360"
+  state_topic: smartthings/Ricky/presence
+  payload_on: "here"
+  payload_off: "away"
+
+- platform: ring
+
+- platform: darksky
+  api_key: !secret darksky_key
+  monitored_conditions:
+    - apparent_temperature
+    - humidity
+    - hourly_summary
+    - icon
+    - precip_probability
+    - precip_intensity
+    - precip_type
+    - pressure
+    - cloud_cover
+    - summary
+    - temperature
+    - uv_index
+    - wind_speed
+    - wind_bearing
+
+- platform: arlo
+
+- platform: plex
+  host: !secret plex_host
+  name: Roomba Plex
+  token: !secret plex_token
+
+- platform: public_ip
+
+- platform: template
+  sensors:
+    upstairs_thermostat_operation:
+      friendly_name: 'Upstairs Thermostat Operation'
+      value_template: >-
+        {%- if states.climate.upstairs.attributes.operation == "idle" -%}
+        Off
+        {%- elif states.climate.upstairs.attributes.operation == "Unknown" -%}
+        Off
+        {%- else -%}
+        {{ states.climate.upstairs.attributes.operation }}
+        {%- endif -%}

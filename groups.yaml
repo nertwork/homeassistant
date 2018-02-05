@@ -1,0 +1,174 @@
+default_view:
+  name: Home
+  view: yes
+  icon: mdi:home
+  entities:
+    - group.weather
+    - history_graph.temperature
+    - group.info_sensors
+    - group.people_sensors
+    - group.cameras
+    - group.garage_cameras
+    - media_player.spotify
+
+downstairs:
+  name: Downstairs
+  view: yes
+  icon: mdi:arrow-down-bold-box
+  entities:
+    - group.weather
+    - climate.downstairs
+    - group.breakfast_nook
+    - group.front_entry
+    - group.front_ring
+    - group.office
+    - group.kitchen
+    - group.family_room
+    - group.living_room
+    - group.downstairs_hall
+    - group.garage
+
+breakfast_nook:
+  name: Breakfast Nook
+  entities:
+    - sensor.wink_backdoor_temperature
+    - sensor.wink_backdoor_humidity
+    - binary_sensor.wink_backdoor_presence
+    - switch.breakfast_nook_wink
+
+family_room:
+  name: Family Room
+  entities:
+    - light.family_room_1
+    - light.family_room_2
+    - switch.family_room_master
+
+front_entry:
+  name: Front Entry
+  entities:
+    - lock.front_door_lock
+    - sensor.front_door_entry
+    - sensor.ring_front_doorbell_last_ding
+    - sensor.ring_front_doorbell_last_motion
+    - sensor.ring_front_doorbell_wifi_signal_category
+
+front_ring:
+  name: Front Entry Ring
+  entities:
+    - sensor.ring_downstairs_wifi_signal_category
+    - sensor.ring_upstairs_wifi_signal_category
+
+garage:
+  name: garage
+  entities:
+
+kitchen:
+  name: Kitchen
+  entities:
+    - switch.kitchen_counter
+    - switch.kitchen_overhead
+
+living_room:
+  name: Living Room
+  entities:
+    - switch.fountain
+
+office:
+  name: Office
+  entities:
+    - switch.office_master
+
+downstairs_hall:
+  name: Downstairs Bathroom Hallway
+  entities:
+    - switch.downstairs_bathroom_sink
+    - light.downstairs_bathroom_hallway
+
+upstairs:
+  name: Upstairs
+  view: yes
+  icon: mdi:arrow-up-bold-box-outline
+  entities:
+    - group.weather
+    - climate.upstairs
+    - group.up_guest
+    - group.up_hallway
+    - group.up_master
+    - group.up_thermostat
+
+up_master:
+  name: Master BR
+  entities:
+    - switch.bedroom_master
+    - light.bedroom_james
+    - light.bedroom_rick
+    - switch.st_bedroom_fan
+    - sensor.bedroom_temperature
+    - sensor_binary.bedroom_occupancy
+
+up_guest:
+  name: Guest Room
+  entities:
+    - light.guest_room_1
+    - light.guest_room_2
+
+up_hallway:
+  name: Upstairs Hall
+  entities:
+    - sensor.upstairs_temperature
+    - sensor.wink_upstairs_hallway_humidity
+    - binary_sensor.wink_upstairs_hallway_presence
+    - switch.linen_hallway_wink
+
+weather:
+  name: Weather
+  entities:
+    - sun.sun
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_cloud_coverage
+    - sensor.dark_sky_precip_probability
+
+cameras:
+  name: Cameras
+  icon: mdi:video
+  entities:
+    - camera.front_doorbell
+    - camera.front_yard
+    - camera.backyard
+
+garage_cameras:
+  name: Garage Cameras
+  icon: mdi:video
+  entities:
+    - camera.garage_east
+    - camera.garage_west_facing
+    - camera.garage_indoor
+
+people_sensors:
+  name: People Tracking
+  entities:
+    - device_tracker.rickysiphonehomenertworkcom
+    - sensor.james_life360
+    - sensor.ricky_life360
+
+info_sensors:
+  name: Sensors
+  entities:
+    - binary_sensor.wink_backdoor_presence
+    - binary_sensor.wink_upstairs_hallway_presence
+    - binary_sensor.upstairs_occupancy
+    - sensor.upstairs_temperature
+    - sensor.downstairs_thermostat_temperature
+    - sensor.roomba_plex
+    - sensor.public_ip
+
+irrigation:
+  name: Irrigation
+  icon: mdi:water-pump
+  entities:
+    - switch.side_yard
+    - switch.front_yard
+    - switch.back_yard
+    - switch.flowerbed
+

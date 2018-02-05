@@ -1,0 +1,9 @@
+group.all_scripts:
+  hidden: true
+
+device_tracker.rickysiphonehomenertworkcom:
+  hidden: false
+
+sensor.downstairs_thermostat_temperature:
+  hidden: false
+  friendly_name: Downstairs Hall Temp

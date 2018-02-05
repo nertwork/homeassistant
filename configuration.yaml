@@ -1,0 +1,175 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 34.1476
+  longitude: -117.4581
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 489
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Los_Angeles
+
+  customize_glob:
+    "device_tracker.*":
+      hidden: true
+
+  customize: !include customize.yml
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+  themes: !include configuration_themes.yaml
+
+
+# Enables configuration UI
+config:
+
+http:
+  # Uncomment this to add a password (recommended!)
+    api_password: !secret http_password
+  # Uncomment this if you are using SSL or running in Docker etc
+    base_url: james-nuc-2.home.nertwork.com
+    server_port: 443
+    trusted_networks:
+      - 127.0.0.1
+      - ::1
+      - 172.28.255.0/24
+    ssl_certificate: /config/james-nuc-2.home.nertwork.com.pem
+    ssl_key: /config/james-nuc-2.home.nertwork.com.pem
+
+# Checks for available updates
+#updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Locks
+lock:
+  - platform: mqtt
+    name: "Front Door Lock"
+    state_topic: "smartthings/Front Door Schlage/lock"
+    command_topic: "smartthings/Front Door Schlage/lock"
+    payload_lock: "locked"
+    payload_unlock: "unlocked"
+    retain: true
+
+#Cameras 
+camera:
+  - platform: ring
+    scan_interval: 30
+
+  - platform: foscam
+    name: "Garage Indoor"
+    ip: !secret foscam_ip 
+    username: !secret foscam_username
+    password: !secret foscam_password
+
+  - platform: arlo
+
+#Includes
+switch: !include switches.yml
+sensor: !include sensor.yml
+automation: !include_dir_merge_list automation/
+group: !include groups.yaml
+
+# Weather Prediction
+notify:
+  - name: james_pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet_api
+
+# Text to speech
+tts:
+  platform: google
+
+# mqtt for smartthings integration
+mqtt:
+  broker: localhost
+  discovery: true
+  discovery_prefix: stauto
+
+wink:
+
+nest:
+  client_id: !secret nest_id
+  client_secret: !secret nest_secret
+
+ecobee:
+  api_key: !secret ecobee_secret
+
+wemo:
+
+light:
+  - platform: lifx
+  - platform: hue
+    host: !secret hue_ip 
+  - platform: mqtt
+    name: "Downstairs Bathroom Hallway"
+    state_topic: "smartthings/Downstairs Bathroom Hallway/switch"
+    command_topic: "smartthings/Downstairs Bathroom Hallway/switch"
+    brightness_state_topic: "smartthings/Downstairs Bathroom Hallway/level"
+    brightness_command_topic: "smartthings/Downstairs Bathroom Hallway/level"
+    brightness_scale: 99
+    brightness_value_template: '{{ value }}'
+    qos: 0
+    payload_on: "on"
+    payload_off: "off"
+    optimistic: false
+    retain: true
+
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+
+arlo:
+  username: !secret arlo_username
+  password: !secret arlo_password
+
+device_tracker:
+  - platform: asuswrt
+    host: !secret asus_ip
+    username: !secret asus_username
+    password: !secret asus_password
+    track_new_devices: yes
+
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_client
+    client_secret: !secret spotify_secret
+
+history_graph:
+  gr1:
+    name: Rachio
+    entities:
+      - switch.side_yard
+      - switch.front_yard
+      - switch.back_yard
+      - switch.flowerbed
+    hours_to_show: 480
+    refresh: 120
+  gr2:
+    name: Temperature
+    entities:
+      - sensor.upstairs_temperature
+      - sensor.downstairs_thermostat_temperature
+      - sensor.dark_sky_apparent_temperature
+      - sensor.downstairs_thermostat_hvac_state
+      - sensor.upstairs_thermostat_operation
+    hours_to_show: 240
+    refresh: 600

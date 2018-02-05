@@ -1,0 +1,83 @@
+- platform: mqtt
+  name: "Family Room Master"
+  state_topic: "smartthings/Family Room Master/switch"
+  command_topic: "smartthings/Family Room Master/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "Office Master"
+  state_topic: "smartthings/Office Master/switch"
+  command_topic: "smartthings/Office Master/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "Kitchen Overhead"
+  state_topic: "smartthings/Kitchen Overhead/switch"
+  command_topic: "smartthings/Kitchen Overhead/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "Kitchen Counter"
+  state_topic: "smartthings/Kitchen Counter/switch"
+  command_topic: "smartthings/Kitchen Counter/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "Breakfast Nook ST"
+  state_topic: "smartthings/Breakfast Nook/switch"
+  command_topic: "smartthings/Breakfast Nook/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "Linen Hallway ST"
+  state_topic: "smartthings/Linen Hallway/switch"
+  command_topic: "smartthings/Linen Hallway/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "Bedroom Master"
+  state_topic: "smartthings/Bedroom Master/switch"
+  command_topic: "smartthings/Bedroom Master/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "ST Bedroom James"
+  state_topic: "smartthings/Bedroom James/switch"
+  command_topic: "smartthings/Bedroom James/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "ST Bedroom Rick"
+  state_topic: "smartthings/Bedroom Rick/switch"
+  command_topic: "smartthings/Bedroom Rick/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: mqtt
+  name: "ST Bedroom Fan"
+  state_topic: "smartthings/Bedroom Fan/switch"
+  command_topic: "smartthings/Bedroom Fan/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
+- platform: rachio
+  access_token: !secret rachio_token
+

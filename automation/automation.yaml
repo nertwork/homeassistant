@@ -1,0 +1,156 @@
+- alias: BreakFast Nook Sync1
+  trigger:
+    - platform: state
+      entity_id: switch.breakfast_nook_st
+      to: 'off'
+  action:
+    service: switch.turn_off
+    entity_id: switch.breakfast_nook_wink
+- alias: BreakFast Nook Sync2
+  trigger:
+    - platform: state
+      entity_id: switch.breakfast_nook_st
+      to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.breakfast_nook_wink
+- alias: BreakFast Nook Sync3
+  trigger:
+    - platform: state
+      entity_id: switch.breakfast_nook_wink
+      to: 'off'
+  action:
+    service: switch.turn_off
+    entity_id: switch.breakfast_nook_st
+- alias: BreakFast Nook Sync4
+  trigger:
+    - platform: state
+      entity_id: switch.breakfast_nook_wink
+      to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.breakfast_nook_st
+
+- alias: Linen Hallway Sync1
+  trigger:
+    - platform: state
+      entity_id: switch.linen_hallway_st
+      to: 'off'
+  action:
+    service: switch.turn_off
+    entity_id: switch.linen_hallway_wink
+- alias: Linen Hallway Sync2
+  trigger:
+    - platform: state
+      entity_id: switch.linen_hallway_st
+      to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.linen_hallway_wink
+- alias: Linen Hallway Sync3
+  trigger:
+    - platform: state
+      entity_id: switch.linen_hallway_wink
+      to: 'off'
+  action:
+    service: switch.turn_off
+    entity_id: switch.linen_hallway_st
+- alias: Linen Hallway Sync4
+  trigger:
+    - platform: state
+      entity_id: switch.linen_hallway_wink
+      to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.linen_hallway_st
+
+- alias: Family Room Toggle
+  trigger:
+    - platform: state
+      entity_id: switch.family_room_wink
+  action:
+    service: switch.toggle
+    entity_id: switch.family_room_master
+- alias: Family Room Master1
+  trigger:
+    - platform: state
+      entity_id: switch.family_room_master
+      to: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.family_room_1
+- alias: Family Room Master2
+  trigger:
+    - platform: state
+      entity_id: switch.family_room_master
+      to: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.family_room_1
+- alias: Family Room Master3
+  trigger:
+    - platform: state
+      entity_id: switch.family_room_master
+      to: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.family_room_2
+- alias: Family Room Master4
+  trigger:
+    - platform: state
+      entity_id: switch.family_room_master
+      to: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.family_room_2
+
+- alias: Bedroom Master On
+  trigger:
+    - platform: state
+      entity_id: switch.st_bedroom_james
+    - platform: state
+      entity_id: switch.st_bedroom_rick
+  condition:
+    - condition: and
+      conditions: 
+        - condition: state
+          entity_id: switch.st_bedroom_james
+          state: 'on'
+        - condition: state
+          entity_id: switch.st_bedroom_rick
+          state: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.bedroom_master
+
+- alias: Bedroom Master Off
+  trigger:
+    - platform: state
+      entity_id: switch.st_bedroom_james
+    - platform: state
+      entity_id: switch.st_bedroom_rick
+  condition:
+    - condition: and
+      conditions: 
+        - condition: state
+          entity_id: switch.st_bedroom_james
+          state: 'off'
+        - condition: state
+          entity_id: switch.st_bedroom_rick
+          state: 'off'
+  action:
+    service: switch.turn_off
+    entity_id: switch.bedroom_master
+
+- alias: Notify on new nmap device
+  trigger:
+    - platform: event
+      event_type: device_tracker_new_device
+  action:
+    service: notify.james_pushbullet
+    data_template:
+      message: >
+        New device:
+          {{trigger.event.data.host_name}}
+          MAC: {{trigger.event.data.mac}}
+          ({{trigger.event.data.entity_id}}
