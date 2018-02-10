@@ -4,12 +4,26 @@ default_view:
   icon: mdi:home
   entities:
     - group.weather
-    - history_graph.temperature
+    - group.info_sensors
+    - group.people_sensors
+    - media_player.spotify
+
+my_cameras:
+  name: Cameras
+  view: yes
+  icon: mdi:camera
+  entities:
+    - group.weather
+    - group.my_graphs
     - group.info_sensors
     - group.people_sensors
     - group.cameras
     - group.garage_cameras
-    - media_player.spotify
+
+my_graphs:
+  name: Cameras
+  entities:
+    - history_graph.temperature
 
 downstairs:
   name: Downstairs
@@ -31,9 +45,9 @@ downstairs:
 breakfast_nook:
   name: Breakfast Nook
   entities:
-    - sensor.wink_backdoor_temperature
-    - sensor.wink_backdoor_humidity
     - binary_sensor.wink_backdoor_presence
+    - sensor.wink_backdoor_humidity
+    - sensor.wink_backdoor_temperature
     - switch.breakfast_nook_wink
 
 family_room:
@@ -42,6 +56,7 @@ family_room:
     - light.family_room_1
     - light.family_room_2
     - switch.family_room_master
+    - switch.fireplace
 
 front_entry:
   name: Front Entry
@@ -95,6 +110,7 @@ upstairs:
     - group.up_hallway
     - group.up_master
     - group.up_thermostat
+    - group.up_neato
 
 up_master:
   name: Master BR
@@ -119,6 +135,12 @@ up_hallway:
     - sensor.wink_upstairs_hallway_humidity
     - binary_sensor.wink_upstairs_hallway_presence
     - switch.linen_hallway_wink
+
+up_neato:
+  name: Upstairs Neato
+  entities:
+    - camera.upstairs_neato_cleaning_map
+    - vacuum.upstairs_neato
 
 weather:
   name: Weather

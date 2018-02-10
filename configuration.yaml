@@ -29,17 +29,7 @@ frontend:
 config:
 
 http:
-  # Uncomment this to add a password (recommended!)
-    api_password: !secret http_password
-  # Uncomment this if you are using SSL or running in Docker etc
-    base_url: james-nuc-2.home.nertwork.com
-    server_port: 443
-    trusted_networks:
-      - 127.0.0.1
-      - ::1
-      - 172.28.255.0/24
-    ssl_certificate: /config/james-nuc-2.home.nertwork.com.pem
-    ssl_key: /config/james-nuc-2.home.nertwork.com.pem
+    use_x_forwarded_for: True
 
 # Checks for available updates
 #updater:
@@ -140,6 +130,10 @@ ring:
 arlo:
   username: !secret arlo_username
   password: !secret arlo_password
+
+neato:
+  username: !secret neato_username
+  password: !secret neato_password
 
 device_tracker:
   - platform: asuswrt
