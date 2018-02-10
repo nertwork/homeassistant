@@ -55,10 +55,18 @@
     upstairs_thermostat_operation:
       friendly_name: 'Upstairs Thermostat Operation'
       value_template: >-
-        {%- if states.climate.upstairs.attributes.operation == "idle" -%}
-        Off
-        {%- elif states.climate.upstairs.attributes.operation == "Unknown" -%}
-        Off
+        {%- if states.climate.upstairs.attributes.operation is defined -%}
+          {%- if states.climate.upstairs.attributes.operation == "idle" -%}
+          Off
+          {%- else -%}
+          {{ states.climate.upstairs.attributes.operation }}
+          {%- endif -%}
         {%- else -%}
-        {{ states.climate.upstairs.attributes.operation }}
+        Off
         {%- endif -%}
+- platform: template
+  sensors:
+     upstairs_neto_status:
+       friendly_name: 'Upstairs Neato Status'
+       value_template: >-
+         {{ states.vacuum.upstairs_neato.attributes.status }}
