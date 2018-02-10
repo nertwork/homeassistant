@@ -141,6 +141,7 @@ up_neato:
   entities:
     - camera.upstairs_neato_cleaning_map
     - vacuum.upstairs_neato
+    - sensor.upstairs_neto_status
 
 weather:
   name: Weather
@@ -184,6 +185,7 @@ info_sensors:
     - sensor.downstairs_thermostat_temperature
     - sensor.roomba_plex
     - sensor.public_ip
+    - sensor.upstairs_neto_status
 
 irrigation:
   name: Irrigation
