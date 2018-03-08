@@ -62,6 +62,7 @@ front_entry:
   name: Front Entry
   entities:
     - lock.front_door_lock
+    - switch.st_front_porch
     - sensor.front_door_entry
     - sensor.ring_front_doorbell_last_ding
     - sensor.ring_front_doorbell_last_motion

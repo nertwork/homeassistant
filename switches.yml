@@ -78,6 +78,14 @@
   payload_off: "off"
   retain: true
 
+- platform: mqtt
+  name: "ST Front Porch"
+  state_topic: "smartthings/Front Porch/switch"
+  command_topic: "smartthings/Front Porch/switch"
+  payload_on: "on"
+  payload_off: "off"
+  retain: true
+
 - platform: rachio
   access_token: !secret rachio_token
 
