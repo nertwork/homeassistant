@@ -1,12 +1,12 @@
-#default_view:
-#  name: Home
-#  view: yes
-#  icon: mdi:home
-#  entities:
-#    - group.weather
-#    - group.info_sensors
-#    - group.people_sensors
-#    - media_player.spotify
+default_view:
+  name: Home
+  view: yes
+  icon: mdi:home
+  entities:
+    - group.weather
+    - group.info_sensors
+    - group.people_sensors
+    - media_player.spotify
 
 my_cameras:
   name: Cameras
